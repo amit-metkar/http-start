@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  appName = this.serversService.getAppName();
   servers = [
     {
       name: 'Testserver',
@@ -39,7 +40,7 @@ export class AppComponent {
   onGetServers() {
     this.serversService.getServers().subscribe(
       (servers: any[]) => {
-        console.log(servers);
+        this.servers = servers;
       },
       (error) => { console.log(error); }
     );
